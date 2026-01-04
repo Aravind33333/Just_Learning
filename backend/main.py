@@ -1,11 +1,8 @@
 from fastapi import FastAPI
-from logger import logger
 
-app=FastAPI()
+app = FastAPI()
 
 @app.get("/")
 def check_status():
-    logger.info("API is Running")
+    print("I am a simple print statement inside the route.") # This goes to file now!
     return {"status": "API is running"}
-
-logger.info('Server Start up Complete')
