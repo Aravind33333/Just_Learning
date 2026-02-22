@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- Use .NET 10 which is already installed on your machine -->
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>  <!-- disable strict null checks for simplicity -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      Two packages (like npm packages, but for C#):
+        Dapper               → Run SQL and get results as C# objects
+        Microsoft.Data.SqlClient → Connect to SQL Server
+    -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+  </ItemGroup>
+
+</Project>

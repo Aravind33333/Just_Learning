@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --surface: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+/* Auth Container / Card */
+.auth-container {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Wider container for Account Setup */
+.auth-container.wide {
+  max-width: 700px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* Form Elements */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--text);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.auth-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.auth-form input::placeholder {
+  color: rgba(148, 163, 184, 0.5);
+}
+
+/* Form Grid for Account Setup (2 columns) */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.btn-primary {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.auth-footer a {
+  color: #818cf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+  color: #c084fc;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Dashboard Layout ───────────────────────────────────────────────────── */
+.dashboard {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-gradient);
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.dash-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dash-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #818cf8;
+}
+
+.dash-greeting {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.dash-greeting strong {
+  color: var(--text);
+}
+
+.btn-logout {
+  padding: 0.5rem 1.25rem;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.75rem;
+  color: #f87171;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.dash-body {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ─── Balance Card ──────────────────────────────────────── */
+.balance-card {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.35);
+  animation: slideUp 0.5s ease-out;
+}
+
+.balance-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.balance-value {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.balance-sub {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ─── 2-col grid ─────────────────────────────────────────── */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Cards ─────────────────────────────────────────────── */
+.dash-card {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  animation: slideUp 0.5s ease-out;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #c4b5fd;
+}
+
+/* ─── Transaction Inputs ─────────────────────────────────── */
+.tx-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.tx-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.tx-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-deposit,
+.btn-withdraw {
+  flex: 1;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-deposit {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.btn-withdraw {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-deposit:hover {
+  background: rgba(34, 197, 94, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-withdraw:hover {
+  background: rgba(239, 68, 68, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-deposit:disabled,
+.btn-withdraw:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Stat Rows ─────────────────────────────────────────── */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-row span {
+  color: var(--text-muted);
+}
+
+.stat-row strong {
+  color: var(--text);
+}
+
+.green {
+  color: #4ade80 !important;
+}
+
+.red {
+  color: #f87171 !important;
+}
+
+/* ─── Transaction History Table ─────────────────────────── */
+.tx-history {
+  grid-column: 1 / -1;
+}
+
+.tx-table-wrap {
+  overflow-x: auto;
+}
+
+.tx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tx-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+
+.tx-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.tx-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tx-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-deposit {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.badge-withdraw {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+/* ─── PIN Modal ─────────────────────────────────────────── */
+.pin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.pin-modal {
+  background: #1e1b3a;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.25s ease;
+}
+
+.pin-modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pin-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pin-modal-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.pin-amount {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.pin-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pin-modal-body label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.pin-dots {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  text-align: center;
+}
+
+.pin-error {
+  color: #f87171;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.pin-modal-footer {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 0.875rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+/* ─── Pagination ─────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.pg-btn {
+  padding: 0.45rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pg-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+}
+
+.pg-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pg-numbers {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.pg-num {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pg-num:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.pg-active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+  font-weight: 600;
+}
